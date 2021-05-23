@@ -5,3 +5,13 @@
 
         return  new String[] {getRandomElement(adjectives), getRandomElement(nouns)};
     }
+
+    private List<String> readFromEnum(Enum<?>[] values) {
+        return Arrays.stream(values).map(Enum::name).map(str -> str.replaceAll("_", "-")).collect(Collectors.toList());
+    }
+
+    private String getRandomElement(List<String> list)
+    {
+        Random rand = new Random();
+        return list.get(rand.nextInt(list.size()));
+    }
