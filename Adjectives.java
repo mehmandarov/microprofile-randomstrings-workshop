@@ -1,4 +1,3 @@
-package com.mehmandarov.randomstrings;
 
 public enum Adjectives {
     Abiding,
