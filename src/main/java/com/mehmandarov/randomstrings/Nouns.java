@@ -1,3 +1,4 @@
+package com.mehmandarov.randomstrings;
 
 public enum Nouns {
     Academician,
