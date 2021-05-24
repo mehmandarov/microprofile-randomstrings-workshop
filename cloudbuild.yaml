@@ -1,7 +1,4 @@
 steps:
-  - name: maven:3.8.1-jdk-11-slim
-    entrypoint: 'mvn'
-    args: ['verify']
   - name: 'gcr.io/cloud-builders/docker'
     args: ['build', '-t', 'gcr.io/$PROJECT_ID/randomstrings-workshop', '.']
   # Push the container image to Container Registry
