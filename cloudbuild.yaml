@@ -1,19 +1,21 @@
 steps:
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-t', 'gcr.io/$PROJECT_ID/randomstrings-workshop', '.']
+    args: ['build', '-t', 'gcr.io/$PROJECT_ID/randomstrings-quarkusnative', '.']
   # Push the container image to Container Registry
   - name: 'gcr.io/cloud-builders/docker'
-    args: [ 'push', 'gcr.io/$PROJECT_ID/randomstrings-workshop' ]
+    args: [ 'push', 'gcr.io/$PROJECT_ID/randomstrings-quarkusnative' ]
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
     entrypoint: gcloud
     args:
       - 'run'
       - 'deploy'
-      - 'randomstrings-workshop'
+      - 'randomstrings-quarkusnative'
       - '--image'
-      - 'gcr.io/$PROJECT_ID/randomstrings-workshop:latest'
+      - 'gcr.io/$PROJECT_ID/randomstrings-quarkusnative:latest'
       - '--region'
       - 'europe-north1'
       - '--platform'
       - 'managed'
-images: ['gcr.io/$PROJECT_ID/randomstrings-workshop']
+images: ['gcr.io/$PROJECT_ID/randomstrings-quarkusnative']
+options:
+  machineType: N1_HIGHCPU_8
