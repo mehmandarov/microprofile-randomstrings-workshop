@@ -25,11 +25,10 @@ RUN $MAVEN_HOME/bin/mvn clean package -Pnative -B -e
 # Step 2: build the running container
 FROM registry.access.redhat.com/ubi8/ubi-minimal:8.3 as runner
 WORKDIR /work/
-COPY --from=graalvm /home/app/target/*-runner /work/application
 RUN chown 1001 /work \
     && chmod "g+rwX" /work \
     && chown 1001:root /work
-COPY --chown=1001:root target/*-runner /work/application
+COPY --from=graalvm /home/app/target/*-runner /work/application
 
 EXPOSE 8080
 USER 1001
