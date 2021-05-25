@@ -28,7 +28,7 @@ WORKDIR /work/
 RUN chown 1001 /work \
     && chmod "g+rwX" /work \
     && chown 1001:root /work
-COPY --from=graalvm /home/app/target/*-runner /work/application
+COPY --from=graalvm --chown=1001:root /home/app/target/*-runner /work/application
 
 EXPOSE 8080
 USER 1001
