@@ -1,0 +1,22 @@
+steps:
+  - name: maven:3.8.1-jdk-11-slim
+    entrypoint: 'mvn'
+    args: ['verify']
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t', 'gcr.io/$PROJECT_ID/randomstrings-workshop', '.']
+  # Push the container image to Container Registry
+  - name: 'gcr.io/cloud-builders/docker'
+    args: [ 'push', 'gcr.io/$PROJECT_ID/randomstrings-workshop' ]
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: gcloud
+    args:
+      - 'run'
+      - 'deploy'
+      - 'randomstrings-workshop'
+      - '--image'
+      - 'gcr.io/$PROJECT_ID/randomstrings-workshop:latest'
+      - '--region'
+      - 'europe-north1'
+      - '--platform'
+      - 'managed'
+images: ['gcr.io/$PROJECT_ID/randomstrings-workshop']
