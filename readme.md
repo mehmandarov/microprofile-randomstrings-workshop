@@ -37,9 +37,13 @@ Also, a simple Hello world endpoint is created, have a look at the class **Hello
 More information on MicroProfile can be found [here](https://microprofile.io/)
 
 
+## Build/Run Docker image
+docker build -t openliberty-randomstrings .
+docker run -dp 9080:9080 openliberty-randomstrings
 
-
-
+How to stop:
+docker ps
+docker stop <id>
 
 
 
