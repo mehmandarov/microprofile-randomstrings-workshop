@@ -38,12 +38,14 @@ More information on MicroProfile can be found [here](https://microprofile.io/)
 
 
 ## Build/Run Docker image
-docker build -t openliberty-randomstrings .
-docker run -dp 9080:9080 openliberty-randomstrings
+
+    docker build -t openliberty-randomstrings .
+    docker run -dp 9080:9080 openliberty-randomstrings
 
 How to stop:
-docker ps
-docker stop <id>
+
+    docker ps
+    docker stop <id>
 
 
 
