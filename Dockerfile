@@ -1,7 +1,9 @@
 # Step 0: Build the image
 FROM maven:3.8.6-jdk-11 as maven
-COPY . /home/app
+COPY pom.xml /home/app/
 WORKDIR /home/app
+RUN mvn -B org.apache.maven.plugins:maven-dependency-plugin:3.1.2:go-offline
+COPY src /home/app/src
 RUN mvn package -Dquarkus.package.type=native-sources
 
 ## Stage 2: build quarkus-native
