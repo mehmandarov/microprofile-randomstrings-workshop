@@ -1,4 +1,3 @@
 *
-!target/native-sources/*
 !src/
 !pom.xml
